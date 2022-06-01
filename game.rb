@@ -32,6 +32,14 @@ class Game
     puts "-----------------------------"
     exit 0
   end
+  
+  def rotate
+    if @current_player == @players[0]
+      @current_player = players[1]
+    elsif @current_player == players[1]
+      @current_player = players[0]
+    end
+  end
 
   def winner?
     if @player1.lives.zero?
@@ -46,5 +54,5 @@ class Game
       game_over
     end
   end
-  
+
 end
