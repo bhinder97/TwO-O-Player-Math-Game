@@ -25,5 +25,26 @@ class Game
     @players.each { |player| puts "#{player.name} Lives: #{player.lives}/3"}
     puts '--------------------------'
   end
+
+  def game_over
+    puts "--------- GAME OVER ---------"
+    puts "Good Bye!"
+    puts "-----------------------------"
+    exit 0
+  end
+
+  def winner?
+    if @player1.lives.zero?
+      puts '-------- WINNER ---------'
+      puts "#{@player2.name} is the winner with #{player2.lives}/3"
+      puts '-------------------------'
+      game_over
+    elsif @player2.lives.zero?
+      puts '-------- WINNER ---------'
+      puts "#{@player1.name} is the winner with #{player1.lives}/3"
+      puts '-------------------------'
+      game_over
+    end
+  end
   
 end
