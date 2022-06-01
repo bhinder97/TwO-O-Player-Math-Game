@@ -13,5 +13,17 @@ class Game
     @num2 = rand(1...10)
     @answer = @num1 + @num2
   end
+
+  def next_round
+    puts "---------- NEXT ----------"
+    puts "#{@current_player.name}: What does #{num1} plus #{num2} equal?"
+    print 'Answer is: '
+  end
+
+  def game_status
+    puts '--------- STATUS ---------'
+    @players.each { |player| puts "#{player.name} Lives: #{player.lives}/3"}
+    puts '--------------------------'
+  end
   
 end
