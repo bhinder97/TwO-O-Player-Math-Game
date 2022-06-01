@@ -8,4 +8,10 @@ class Game
     @current_player = @players[0]
   end
 
+  def questions
+    @num1 = rand(1...10)
+    @num2 = rand(1...10)
+    @answer = @num1 + @num2
+  end
+  
 end
