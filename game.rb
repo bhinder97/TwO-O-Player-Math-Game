@@ -35,24 +35,51 @@ class Game
   
   def rotate
     if @current_player == @players[0]
-      @current_player = players[1]
-    elsif @current_player == players[1]
-      @current_player = players[0]
+      @current_player = @players[1]
+    elsif @current_player == @players[1]
+      @current_player = @players[0]
     end
   end
+
+  def player_answer
+    @player_answer = gets.chomp.to_i
+  end
+
+  def player_correct?
+    if @player_answer == @answer
+      puts "#{@current_player.name}: Yes, you are right!"
+      puts '---------------------------'
+    else
+      puts "#{@current_player.name}: Wrong..."
+      puts '---------------------------'
+      @current_player.lose_life
+    end
+  end
+
 
   def winner?
     if @player1.lives.zero?
       puts '-------- WINNER ---------'
-      puts "#{@player2.name} is the winner with #{player2.lives}/3"
+      puts "#{@player2.name} is the winner with #{@player2.lives}/3"
       puts '-------------------------'
       game_over
     elsif @player2.lives.zero?
       puts '-------- WINNER ---------'
-      puts "#{@player1.name} is the winner with #{player1.lives}/3"
+      puts "#{@player1.name} is the winner with #{@player1.lives}/3"
       puts '-------------------------'
       game_over
     end
   end
 
+  def play
+    until winner?
+      questions
+      next_round
+      player_answer
+      player_correct?
+      game_status
+      rotate
+    end
+    winner?
+  end
 end

@@ -4,7 +4,7 @@ class Player
 
   def initialize(name)
     @lives = 3
-    @name - name
+    @name = name
   end
 
   def lose_life
